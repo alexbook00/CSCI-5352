@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
     # print(len(edge_list_filepaths), len(attr_filepaths))
     for i in range(len(edge_list_filepaths)):
-        print(edge_list_filepaths[i], attr_filepaths[i])
+        print(attr_filepaths[i])
 
         with open(edge_list_filepaths[i]) as f:
             G = nx.read_edgelist(f, nodetype=int)
@@ -72,5 +72,6 @@ if __name__ == '__main__':
 
         modList.append([attr_filepaths[i].split('_')[0].split('\\')[1], Q_status, Q_major, Q_degree])
 
-        # break
-    print(modList)
+    # pprint(modList)
+    df = pd.DataFrame(modList, columns=['School', 'Modularity by status', 'Modularity by major', 'Modularity by degree'])
+    df.to_csv('df_out.csv')
