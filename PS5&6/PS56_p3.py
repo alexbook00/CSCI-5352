@@ -174,29 +174,3 @@ if __name__ == '__main__':
             karate_groups_dict[arr[0]] = arr[1]
 
     print(nmi(Q_max_groups, karate_groups_dict))
-    pprint(Q_max_groups)
-    pprint(karate_groups_dict)
-
-    # p1 = {
-    #     '1' : '1',
-    #     '2' : '1',
-    #     '3' : '1',
-    #     '4' : '2',
-    #     '5' : '2',
-    #     '6' : '2'
-    # }
-    #
-    # p2 = {
-    #     '1' : '2',
-    #     '2' : '2',
-    #     '3' : '1',
-    #     '4' : '1',
-    #     '5' : '2',
-    #     '6' : '2'
-    # }
-    #
-    # H_X = entropy(p1)
-    # H_Y = entropy(p2)
-    # I_X_Y = nmi(p1, p2)
-    #
-    # print(2*I_X_Y/(H_X + H_Y))
