@@ -167,6 +167,7 @@ if __name__ == '__main__':
     nx.draw(G, node_color=color_map, with_labels=True)
     plt.show()
 
+    # nmi the two partitions
     karate_groups_dict = {}
     with open('karate_groups.txt') as f:
         for line in f:
