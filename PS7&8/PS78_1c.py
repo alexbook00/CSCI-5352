@@ -3,6 +3,7 @@ import networkx as nx
 from pprint import pprint
 import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib import cm
 
 def pandemic_simulation(G):
     spread = True
@@ -36,7 +37,8 @@ def make_plots(filename, a, b):
     z = np.reshape(Z, (a, b))
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.plot_surface(x, y, z)
+    q = ax.plot_surface(x, y, z, cmap = cm.coolwarm)
+    fig.colorbar(q)
     ax.set_xlabel('epsilon')
     ax.set_ylabel('Probability of spreading')
     ax.set_zlabel('Length of pandemic (days)')
@@ -51,7 +53,8 @@ def make_plots(filename, a, b):
     z = np.reshape(Z, (a, b))
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.plot_surface(x, y, z)
+    q = ax.plot_surface(x, y, z, cmap = cm.coolwarm)
+    fig.colorbar(q)
     ax.set_xlabel('epsilon')
     ax.set_ylabel('Probability of spreading')
     ax.set_zlabel('Size of pandemic (fraction of infected individuals)')
@@ -78,7 +81,9 @@ if __name__ == '__main__':
 
     p_array = [0, .005, .01, .015, .02, .025, .03, .035, .04, .045,
              .05, .055, .06, .065, .07, .075, .08, .085, .09, .095,
-              .1, .15, .2, .25, .3, .35, .4, .5, .6, .7, .8, .9, 1]
+              .1, .125, .15, .175, .2, .225, .25, .275, .3, .325, .35, .375,
+              .4, .425, .45, .475, .5, .525, .55, .575, .6, .625, .65, .675,
+              .7, .725, .75, .775, .8, .825, .85, .875, .9, .925, .95, .975, 1]
 
     length_size_dict = {}
     for epsilon in epsilon_array:
@@ -86,7 +91,7 @@ if __name__ == '__main__':
         for p in p_array:
             length_array = []
             size_array = []
-            for i in range(5):
+            for i in range(100):
 
                 within = (2*c + epsilon)/(2*n)
                 between = (2*c - epsilon)/(2*n)
@@ -112,8 +117,8 @@ if __name__ == '__main__':
     for key, value in length_size_dict.items():
         df.loc[-1] = [key[0], key[1], value[0], value[1]]
         df.index += 1
-    df.to_csv('big_arrays.csv')
+    df.to_csv('overnight_data.csv')
 
     # a = len(epsilon_array)
     # b = len(p_array)
-    # make_plots('ramping_it_up_again.csv', a, b)
+    # make_plots('almost_there.csv', a, b)
