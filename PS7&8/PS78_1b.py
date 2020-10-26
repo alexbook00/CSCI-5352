@@ -71,28 +71,29 @@ def make_plots(filename):
     plt.show()
 
 if __name__ == '__main__':
-    omega, group_id = generate_omega_and_groupid()
-    length_size_dict = {}
-    p_array = [0, .0025, .005, .0075, .01, .0125, .015, .0175,
-               .02, .0225, .025, .0275, .03, .0325, .035, .0375,
-               .04, .0425, .045, .0475, .05, .0525, .055, .0575,
-               .06, .0625, .065, .0675, .07, .0725, .075, .0775,
-               .08, .0825, .085, .0875, .09, .0925, .095, .0975,
-               .1, .125, .15, .175, .2, .225, .25, .275, .3, .325, .35, .375,
-               .4, .5, .6, .7, .8, .9, 1]
+    # omega, group_id = generate_omega_and_groupid()
+    # length_size_dict = {}
+    # p_array = [0, .0025, .005, .0075, .01, .0125, .015, .0175,
+    #            .02, .0225, .025, .0275, .03, .0325, .035, .0375,
+    #            .04, .0425, .045, .0475, .05, .0525, .055, .0575,
+    #            .06, .0625, .065, .0675, .07, .0725, .075, .0775,
+    #            .08, .0825, .085, .0875, .09, .0925, .095, .0975,
+    #            .1, .125, .15, .175, .2, .225, .25, .275, .3, .325, .35, .375,
+    #            .4, .425, .45, .475, .5, .525, .55, .575, .6, .625, .65, .675,
+    #            .7, .725, .75, .775, .8, .825, .85, .875, .9, .925, .95, .975, 1]
+    #
+    # for p in p_array:
+    #     print(p)
+    #     length_array = []
+    #     size_array = []
+    #     for i in range(200):
+    #         G = generate_graph(omega, group_id)
+    #         length, size = pandemic_simulation(G)
+    #         length_array.append(length)
+    #         size_array.append(size)
+    #     length_size_dict[p] = (np.average(length_array), np.average(size_array))
+    #
+    # df = pd.DataFrame.from_dict(length_size_dict)
+    # df.T.to_csv('during_the_day_1b.csv')
 
-    for p in p_array:
-        print(p)
-        length_array = []
-        size_array = []
-        for i in range(100):
-            G = generate_graph(omega, group_id)
-            length, size = pandemic_simulation(G)
-            length_array.append(length)
-            size_array.append(size)
-        length_size_dict[p] = (np.average(length_array), np.average(size_array))
-
-    df = pd.DataFrame.from_dict(length_size_dict)
-    df.T.to_csv('data.csv')
-
-    make_plots('data.csv')
+    make_plots('during_the_day_1b.csv')
