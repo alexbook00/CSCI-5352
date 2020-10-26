@@ -39,7 +39,7 @@ def make_plots(filename, a, b):
     ax = fig.add_subplot(111, projection='3d')
     q = ax.plot_surface(x, y, z, cmap = cm.coolwarm)
     fig.colorbar(q)
-    ax.set_xlabel('epsilon')
+    ax.set_xlabel('Epsilon (strength of community structure)')
     ax.set_ylabel('Probability of spreading')
     ax.set_zlabel('Length of pandemic (days)')
     ax.view_init(15, 15)
@@ -55,7 +55,7 @@ def make_plots(filename, a, b):
     ax = fig.add_subplot(111, projection='3d')
     q = ax.plot_surface(x, y, z, cmap = cm.coolwarm)
     fig.colorbar(q)
-    ax.set_xlabel('epsilon')
+    ax.set_xlabel('Epsilon (strength of community structure)')
     ax.set_ylabel('Probability of spreading')
     ax.set_zlabel('Size of pandemic (fraction of infected individuals)')
     ax.view_init(15, -15)
@@ -117,8 +117,8 @@ if __name__ == '__main__':
     for key, value in length_size_dict.items():
         df.loc[-1] = [key[0], key[1], value[0], value[1]]
         df.index += 1
-    df.to_csv('overnight_data.csv')
+    df.to_csv('data.csv')
 
-    # a = len(epsilon_array)
-    # b = len(p_array)
-    # make_plots('almost_there.csv', a, b)
+    a = len(epsilon_array)
+    b = len(p_array)
+    make_plots('data.csv', a, b)
