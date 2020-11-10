@@ -68,21 +68,21 @@ def make_plots(filename, a, b):
     ax = fig.add_subplot(111, projection='3d')
     q = ax.plot_surface(x, y, z, cmap = cm.coolwarm)
     fig.colorbar(q)
-    ax.set_xlabel('Number of nodes')
-    ax.set_ylabel('Probability of edge existing between two nodes')
+    ax.set_xlabel('Number of nodes (n)')
+    ax.set_ylabel('Probability of edge existing (p)')
     ax.set_zlabel('Violations after MVR algorithm runs')
     plt.show()
 
 if __name__ == '__main__':
     V_n_p_dict = {}
-    n_arr = [10, 20, 30, 40, 50]
+    n_arr = [10, 20, 30, 40, 50, 60, 70, 80, 90]
     p_arr = [.1, .2, .3, .4, .5, .6, .7, .8, .9, 1]
 
     for n in n_arr:
         for p in p_arr:
             print(n, p)
             V_arr = []
-            for i in range(10):
+            for i in range(50):
                 G = G_n_p(n, p)
                 V_arr.append(MVR(G))
             V_n_p_dict[(n,p)] = np.mean(V_arr)
@@ -92,8 +92,8 @@ if __name__ == '__main__':
     for key, value in V_n_p_dict.items():
         df.loc[-1] = [key[0], key[1], value]
         df.index += 1
-    df.to_csv('data2.csv')
+    df.to_csv('data.csv')
 
     a = len(n_arr)
     b = len(p_arr)
-    # make_plots('data.csv', a, b)
+    make_plots('data.csv', a, b)
