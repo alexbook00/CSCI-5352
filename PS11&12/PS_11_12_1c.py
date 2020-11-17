@@ -39,14 +39,11 @@ if __name__ == '__main__':
     node_dict = edge_list_to_array('partc_edges', node_dict)
 
     sorted_nodes = [(k,v) for (k, v) in sorted(node_dict.items(), key=lambda x: x[1])]
-    # pprint(sorted_nodes)
 
-    # print(len(sorted_nodes))
     for tuple in sorted_nodes:
         # if both out-degree and in-degree are zero, remove the node
         if tuple[1][1] == 0 and tuple[1][2] == 0:
             sorted_nodes.remove(tuple)
-    # print(len(sorted_nodes))
 
     degrees = 0
     count = 0
